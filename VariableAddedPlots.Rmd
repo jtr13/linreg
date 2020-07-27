@@ -142,8 +142,6 @@ plot_ly() %>%
 
 
 ```{r}
-  plot_ly(data = iris, x = ~Sepal.Length, y = ~Petal.Length, z = ~Sepal.Width, symbol = ~factor(Species), symbols = c("triangle-up", "diamond", "circle"))
-
 plot_ly() %>% 
   add_markers(
     data = iris,
