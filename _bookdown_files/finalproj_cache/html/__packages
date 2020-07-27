@@ -1,0 +1,15 @@
+base
+carData
+car
+effects
+alr4
+tidyverse
+ggplot2
+tibble
+tidyr
+readr
+purrr
+dplyr
+stringr
+forcats
+plotly
