@@ -136,12 +136,6 @@ plot_ly() %>%
 
 
 ```{r}
-
-```
-
-
-
-```{r}
 plot_ly() %>% 
   add_markers(
     data = iris,
