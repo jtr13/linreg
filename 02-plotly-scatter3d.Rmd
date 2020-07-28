@@ -43,7 +43,7 @@ um <- broom::augment(mod) %>%
 # https://plotly.com/r/line-and-scatter/
 
 plot_ly() %>% 
-
+  
   add_trace(data = um, type = "scatter3d", mode = "markers", 
             x = ~logppgdp, y = ~fertility, z = ~lifeExpF, 
 # only 8 symbols available for scatter3d: circle, circle-open,
@@ -62,6 +62,7 @@ plot_ly() %>%
                                    showspikes = FALSE),
                       yaxis = list(showspikes = FALSE),
                       zaxis = list(showspikes = FALSE)))  %>%
+  
 # default textposition is top center
 # https://plotly.com/r/reference/#scatter3d-textposition
   add_text(data = um,
