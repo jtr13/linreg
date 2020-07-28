@@ -38,7 +38,9 @@ m <- matrix(vals, nrow = 9, ncol = 7)
 
 um <- broom::augment(mod) %>% 
   rename(country = .rownames) %>% 
-  mutate(label = paste(country, "<br>lifeExpF: ", lifeExpF, "<br>lifeExpF predicted", round(.fitted, 2)),
+  mutate(label = paste(country, "<br>lifeExpF: ",
+                       lifeExpF, "<br>lifeExpF predicted",
+                       round(.fitted, 2)),
          resids = ifelse(.resid < 0, "-", "+"))
 # https://plotly.com/r/line-and-scatter/
 
