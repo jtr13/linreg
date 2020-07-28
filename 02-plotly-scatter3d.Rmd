@@ -17,6 +17,7 @@ u <- UN11
 ```{r}
 u$logppgdp <- log(u$ppgdp)
 mod <- lm(lifeExpF ~ fertility + logppgdp, data = u)
+
 mod
 
 # https://community.plotly.com/t/3d-scatter-3d-regression-line/4149
