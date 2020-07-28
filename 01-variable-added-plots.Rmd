@@ -1,0 +1,95 @@
+# Added variable plots
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE,
+                      warning = FALSE,
+                      cache = TRUE)
+```
+
+p. 54 Figure 3.3(a)
+
+1. Compute the regression of `lifeExpF` on `log(ppgdp)`:
+
+```{r}
+library(alr4)
+library(tidyverse)
+library(plotly)
+u <- UN11
+```
+
+
+```{r}
+mod1 <- lm(u$lifeExpF ~ log(u$ppgdp))
+mod1
+summary(mod1)$r.squared
+u$`Model 1 residuals` <- ifelse(mod1$residuals > 0, "higher than expected lifeExpF", "lower than expected lifeExpF")
+
+```
+
+```{r}
+g <- ggplot(u, aes(log(ppgdp), lifeExpF, label = rownames(u), color = `Model 1 residuals`)) + 
+  geom_point() +  
+  geom_smooth(aes(group = 1), method = "lm", se=FALSE, show.legend =FALSE) +
+  ggtitle("Model 1")
+g
+
+```
+
+
+**The residuals from this model are the part of the response `lifeExpF` not explained by the regression on `log(ppgdp)`**
+
+
+2. Compute the regression of `fertility` on `log(ppgdp)`.
+
+**The residuals from this model are the part of the new regressor `fertility` not explained by the regression on `log(ppgdp)`**
+```{r}
+mod2 <- lm(u$fertility ~ log(u$ppgdp))
+mod2
+summary(mod2)$r.squared
+
+g <- ggplot(u, aes(log(ppgdp), fertility, label = rownames(u), color = `Model 1 residuals`)) + 
+  geom_point() +
+  geom_smooth(aes(group = 1), method = "lm", se=FALSE, show.legend = FALSE) +
+  ggtitle("Model 2")
+g
+```
+
+3. The added variable plot is of the unexplained part of the response from (1) on the unexplained part of the added regressor from (2).
+
+```{r}
+residdf <- tibble::tibble(r1 = mod1$residuals,
+                          r2 = mod2$residuals)
+g <- ggplot(residdf, aes(r2, r1)) + 
+  geom_point() +
+  xlab(expression(paste(hat(e), " from fertility on log(ppgdp)"))) +
+  ylab(expression(paste(hat(e), " from lifeExpF on log(ppgdp)"))) +
+  geom_smooth(method = "lm", se=FALSE)
+g
+```
+The slope of this regression line is:
+
+```{r}
+lm(residdf$r1~residdf$r2)
+```
+It is the same as the coefficient of $\hat{\beta_2}$ with both regressors:
+
+```{r}
+u$logppgdp <- log(u$ppgdp)
+mod <- lm(lifeExpF ~ fertility + logppgdp, data = u)
+mod
+```
+
+```{r, eval=FALSE, echo=FALSE}
+# how to label axes in base R
+plot(mod1$residuals ~ mod2$residuals, pch = 16, cex = .75, xlab = expression(paste(hat(e), " from fertility on log(ppgdp)")), ylab = expression(paste(hat(e), " from lifeExpF on log(ppgdp)")), las = 1)
+abline(lm(mod1$residuals ~ mod2$residuals))
+
+# how to label axes in plotly
+ggplotly(g) %>%  layout(
+    xaxis = list(title = TeX("\\hat{e} \\text{ from fertility on log(ppgdp)}")),
+    yaxis = list(title = TeX("\\hat{e} \\text{ from lifeExpF on log(ppgdp)}"))) %>%
+  config(mathjax = "cdn")
+```
+
+

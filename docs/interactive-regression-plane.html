@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Interactive regression plane | Linear Regression</title>
+  <meta name="description" content="Chapter 3 Interactive regression plane | Linear Regression" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Interactive regression plane | Linear Regression" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Interactive regression plane | Linear Regression" />
+  
+  
+  
+
+<meta name="author" content="Joyce Robbins" />
+
+
+<meta name="date" content="2020-07-28" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="added-variable-plots.html"/>
+
+<script src="libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Linear Regression</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="added-variable-plots.html"><a href="added-variable-plots.html"><i class="fa fa-check"></i><b>2</b> Added variable plots</a></li>
+<li class="chapter" data-level="3" data-path="interactive-regression-plane.html"><a href="interactive-regression-plane.html"><i class="fa fa-check"></i><b>3</b> Interactive regression plane</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Linear Regression</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="interactive-regression-plane" class="section level1" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Interactive regression plane</h1>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="interactive-regression-plane.html#cb18-1"></a><span class="kw">library</span>(alr4)</span>
+<span id="cb18-2"><a href="interactive-regression-plane.html#cb18-2"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb18-3"><a href="interactive-regression-plane.html#cb18-3"></a><span class="kw">library</span>(plotly)</span>
+<span id="cb18-4"><a href="interactive-regression-plane.html#cb18-4"></a>u &lt;-<span class="st"> </span>UN11</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="interactive-regression-plane.html#cb19-1"></a>u<span class="op">$</span>logppgdp &lt;-<span class="st"> </span><span class="kw">log</span>(u<span class="op">$</span>ppgdp)</span>
+<span id="cb19-2"><a href="interactive-regression-plane.html#cb19-2"></a>mod &lt;-<span class="st"> </span><span class="kw">lm</span>(lifeExpF <span class="op">~</span><span class="st"> </span>fertility <span class="op">+</span><span class="st"> </span>logppgdp, <span class="dt">data =</span> u)</span>
+<span id="cb19-3"><a href="interactive-regression-plane.html#cb19-3"></a>mod</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = lifeExpF ~ fertility + logppgdp, data = u)
+## 
+## Coefficients:
+## (Intercept)    fertility     logppgdp  
+##      63.448       -4.199        2.415</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="interactive-regression-plane.html#cb21-1"></a><span class="co"># https://community.plotly.com/t/3d-scatter-3d-regression-line/4149</span></span>
+<span id="cb21-2"><a href="interactive-regression-plane.html#cb21-2"></a></span>
+<span id="cb21-3"><a href="interactive-regression-plane.html#cb21-3"></a><span class="co"># predict over sensible grid of values</span></span>
+<span id="cb21-4"><a href="interactive-regression-plane.html#cb21-4"></a><span class="co"># </span></span>
+<span id="cb21-5"><a href="interactive-regression-plane.html#cb21-5"></a><span class="co">#f &lt;- unique(u$fertility)</span></span>
+<span id="cb21-6"><a href="interactive-regression-plane.html#cb21-6"></a><span class="co">#g &lt;- unique(u$logppgdp)</span></span>
+<span id="cb21-7"><a href="interactive-regression-plane.html#cb21-7"></a>f &lt;-<span class="st"> </span><span class="dv">0</span><span class="op">:</span><span class="dv">8</span></span>
+<span id="cb21-8"><a href="interactive-regression-plane.html#cb21-8"></a>g &lt;-<span class="st"> </span><span class="dv">5</span><span class="op">:</span><span class="dv">11</span></span>
+<span id="cb21-9"><a href="interactive-regression-plane.html#cb21-9"></a>grid &lt;-<span class="st"> </span><span class="kw">expand.grid</span>(f, g)</span>
+<span id="cb21-10"><a href="interactive-regression-plane.html#cb21-10"></a>d &lt;-<span class="st"> </span><span class="kw">setNames</span>(<span class="kw">data.frame</span>(grid), <span class="kw">c</span>(<span class="st">&quot;fertility&quot;</span>, <span class="st">&quot;logppgdp&quot;</span>))</span>
+<span id="cb21-11"><a href="interactive-regression-plane.html#cb21-11"></a>vals &lt;-<span class="st"> </span><span class="kw">predict</span>(mod, <span class="dt">newdata =</span> d)</span>
+<span id="cb21-12"><a href="interactive-regression-plane.html#cb21-12"></a></span>
+<span id="cb21-13"><a href="interactive-regression-plane.html#cb21-13"></a><span class="co"># form matrix and give to plotly</span></span>
+<span id="cb21-14"><a href="interactive-regression-plane.html#cb21-14"></a><span class="co"># x has to be the second variable and y the first or</span></span>
+<span id="cb21-15"><a href="interactive-regression-plane.html#cb21-15"></a><span class="co"># do m &lt;- m(t)</span></span>
+<span id="cb21-16"><a href="interactive-regression-plane.html#cb21-16"></a>m &lt;-<span class="st"> </span><span class="kw">matrix</span>(vals, <span class="dt">nrow =</span> <span class="dv">9</span>, <span class="dt">ncol =</span> <span class="dv">7</span>)</span>
+<span id="cb21-17"><a href="interactive-regression-plane.html#cb21-17"></a></span>
+<span id="cb21-18"><a href="interactive-regression-plane.html#cb21-18"></a>um &lt;-<span class="st"> </span>broom<span class="op">::</span><span class="kw">augment</span>(mod) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb21-19"><a href="interactive-regression-plane.html#cb21-19"></a><span class="st">  </span><span class="kw">rename</span>(<span class="dt">country =</span> .rownames) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb21-20"><a href="interactive-regression-plane.html#cb21-20"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">label =</span> <span class="kw">paste</span>(country, <span class="st">&quot;&lt;br&gt;lifeExpF: &quot;</span>, lifeExpF, <span class="st">&quot;&lt;br&gt;lifeExpF predicted&quot;</span>, <span class="kw">round</span>(.fitted, <span class="dv">2</span>)),</span>
+<span id="cb21-21"><a href="interactive-regression-plane.html#cb21-21"></a>         <span class="dt">resids =</span> <span class="kw">ifelse</span>(.resid <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>, <span class="st">&quot;-&quot;</span>, <span class="st">&quot;+&quot;</span>))</span>
+<span id="cb21-22"><a href="interactive-regression-plane.html#cb21-22"></a><span class="co"># https://plotly.com/r/line-and-scatter/</span></span>
+<span id="cb21-23"><a href="interactive-regression-plane.html#cb21-23"></a></span>
+<span id="cb21-24"><a href="interactive-regression-plane.html#cb21-24"></a><span class="kw">plot_ly</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb21-25"><a href="interactive-regression-plane.html#cb21-25"></a></span>
+<span id="cb21-26"><a href="interactive-regression-plane.html#cb21-26"></a><span class="st">  </span><span class="kw">add_trace</span>(<span class="dt">data =</span> um, <span class="dt">type =</span> <span class="st">&quot;scatter3d&quot;</span>, <span class="dt">mode =</span> <span class="st">&quot;markers&quot;</span>, </span>
+<span id="cb21-27"><a href="interactive-regression-plane.html#cb21-27"></a>            <span class="dt">x =</span> <span class="op">~</span>logppgdp, <span class="dt">y =</span> <span class="op">~</span>fertility, <span class="dt">z =</span> <span class="op">~</span>lifeExpF, </span>
+<span id="cb21-28"><a href="interactive-regression-plane.html#cb21-28"></a><span class="co"># only 8 symbols available for scatter3d: circle, circle-open,</span></span>
+<span id="cb21-29"><a href="interactive-regression-plane.html#cb21-29"></a><span class="co"># square, square-open, diamond, diamond-open, cross, x</span></span>
+<span id="cb21-30"><a href="interactive-regression-plane.html#cb21-30"></a><span class="co"># instead using pch symbols, see:</span></span>
+<span id="cb21-31"><a href="interactive-regression-plane.html#cb21-31"></a><span class="co"># https://plotly-r.com/scatter-traces.html</span></span>
+<span id="cb21-32"><a href="interactive-regression-plane.html#cb21-32"></a>            <span class="dt">opacity =</span> <span class="fl">.5</span>,</span>
+<span id="cb21-33"><a href="interactive-regression-plane.html#cb21-33"></a>            <span class="dt">marker =</span> <span class="kw">list</span>(<span class="dt">size =</span> <span class="dv">5</span>),</span>
+<span id="cb21-34"><a href="interactive-regression-plane.html#cb21-34"></a>            <span class="dt">color =</span> <span class="op">~</span>resids,</span>
+<span id="cb21-35"><a href="interactive-regression-plane.html#cb21-35"></a><span class="co"># https://plotly.com/r/hover-text-and-formatting/              </span></span>
+<span id="cb21-36"><a href="interactive-regression-plane.html#cb21-36"></a>            <span class="dt">text =</span> <span class="op">~</span>label, <span class="dt">hoverinfo =</span> <span class="st">&quot;text&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb21-37"><a href="interactive-regression-plane.html#cb21-37"></a><span class="st">  </span></span>
+<span id="cb21-38"><a href="interactive-regression-plane.html#cb21-38"></a><span class="co"># https://plotly.com/r/3d-hover/#customize-hover-for-spikelines</span></span>
+<span id="cb21-39"><a href="interactive-regression-plane.html#cb21-39"></a><span class="st">  </span><span class="kw">layout</span>(<span class="dt">title =</span> <span class="st">&quot;lifeExpF ~ fertility + log(ppgdp)&quot;</span>,</span>
+<span id="cb21-40"><a href="interactive-regression-plane.html#cb21-40"></a>         <span class="dt">scene =</span> <span class="kw">list</span>(<span class="dt">xaxis =</span> <span class="kw">list</span>(<span class="dt">title =</span> <span class="st">&quot;log(ppgdp)&quot;</span>, </span>
+<span id="cb21-41"><a href="interactive-regression-plane.html#cb21-41"></a>                                   <span class="dt">showspikes =</span> <span class="ot">FALSE</span>),</span>
+<span id="cb21-42"><a href="interactive-regression-plane.html#cb21-42"></a>                      <span class="dt">yaxis =</span> <span class="kw">list</span>(<span class="dt">showspikes =</span> <span class="ot">FALSE</span>),</span>
+<span id="cb21-43"><a href="interactive-regression-plane.html#cb21-43"></a>                      <span class="dt">zaxis =</span> <span class="kw">list</span>(<span class="dt">showspikes =</span> <span class="ot">FALSE</span>)))  <span class="op">%&gt;%</span></span>
+<span id="cb21-44"><a href="interactive-regression-plane.html#cb21-44"></a><span class="co"># default textposition is top center</span></span>
+<span id="cb21-45"><a href="interactive-regression-plane.html#cb21-45"></a><span class="co"># https://plotly.com/r/reference/#scatter3d-textposition</span></span>
+<span id="cb21-46"><a href="interactive-regression-plane.html#cb21-46"></a><span class="st">  </span><span class="kw">add_text</span>(<span class="dt">data =</span> um,</span>
+<span id="cb21-47"><a href="interactive-regression-plane.html#cb21-47"></a>           <span class="dt">x =</span> <span class="op">~</span>logppgdp, <span class="dt">y =</span> <span class="op">~</span>fertility, <span class="dt">z =</span> <span class="op">~</span>lifeExpF,</span>
+<span id="cb21-48"><a href="interactive-regression-plane.html#cb21-48"></a>           <span class="dt">text =</span> <span class="op">~</span>resids, <span class="dt">textposition =</span> <span class="st">&quot;middle center&quot;</span>,</span>
+<span id="cb21-49"><a href="interactive-regression-plane.html#cb21-49"></a>           <span class="dt">hoverinfo =</span> <span class="st">&quot;none&quot;</span>, <span class="dt">size =</span> <span class="kw">I</span>(<span class="dv">15</span>))  <span class="op">%&gt;%</span></span>
+<span id="cb21-50"><a href="interactive-regression-plane.html#cb21-50"></a><span class="st">  </span></span>
+<span id="cb21-51"><a href="interactive-regression-plane.html#cb21-51"></a><span class="st">  </span><span class="kw">add_surface</span>(<span class="dt">x =</span> <span class="op">~</span>g, <span class="dt">y =</span> <span class="op">~</span>f, <span class="dt">z =</span> <span class="op">~</span>m,</span>
+<span id="cb21-52"><a href="interactive-regression-plane.html#cb21-52"></a>              <span class="dt">opacity =</span> <span class="fl">.5</span>, </span>
+<span id="cb21-53"><a href="interactive-regression-plane.html#cb21-53"></a><span class="co">#              showscale = FALSE, </span></span>
+<span id="cb21-54"><a href="interactive-regression-plane.html#cb21-54"></a>              <span class="dt">hoverinfo =</span> <span class="st">&quot;none&quot;</span>, </span>
+<span id="cb21-55"><a href="interactive-regression-plane.html#cb21-55"></a><span class="co"># https://plotly.com/r/3d-hover/#customize-hover-for-surface-contours</span></span>
+<span id="cb21-56"><a href="interactive-regression-plane.html#cb21-56"></a>              <span class="dt">contours =</span> <span class="kw">list</span>(<span class="dt">x =</span> <span class="kw">list</span>(<span class="dt">highlight =</span> <span class="ot">FALSE</span>),</span>
+<span id="cb21-57"><a href="interactive-regression-plane.html#cb21-57"></a>                              <span class="dt">y =</span> <span class="kw">list</span>(<span class="dt">highlight =</span> <span class="ot">FALSE</span>),</span>
+<span id="cb21-58"><a href="interactive-regression-plane.html#cb21-58"></a>                              <span class="dt">z =</span> <span class="kw">list</span>(<span class="dt">highlight =</span> <span class="ot">FALSE</span>)))</span></code></pre></div>
+<div id="htmlwidget-e4997b455b45dd0959c0" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e4997b455b45dd0959c0">{"x":{"visdat":{"b2a23a870117":["function () ","plotlyVisDat"],"b2a27558ab05":["function () ","data"],"b2a210441173":["function () ","data"]},"cur_data":"b2a210441173","attrs":{"b2a27558ab05":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter3d","mode":"markers","x":{},"y":{},"z":{},"opacity":0.5,"marker":{"size":5},"color":{},"text":{},"hoverinfo":"text","inherit":true},"b2a210441173":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":{},"y":{},"z":{},"text":{},"type":"scatter3d","mode":"text","textposition":"middle center","hoverinfo":"none","size":[15],"inherit":true},"b2a210441173.1":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"z":{},"type":"surface","x":{},"y":{},"opacity":0.5,"hoverinfo":"none","contours":{"x":{"highlight":false},"y":{"highlight":false},"z":{"highlight":false}},"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"lifeExpF ~ fertility + log(ppgdp)","scene":{"xaxis":{"title":"log(ppgdp)","showspikes":false},"yaxis":{"showspikes":false,"title":"fertility"},"zaxis":{"showspikes":false,"title":"lifeExpF"}},"hovermode":"closest","showlegend":true,"legend":{"yanchor":"top","y":0.5}},"source":"A","config":{"showSendToCloud":false},"data":[{"type":"scatter3d","mode":"markers","x":[6.21260609575152,8.37145039936278,10.036772039682,10.7179404457228,8.63721372201281,10.0195624635112,9.80830286485734,8.64857226947262,11.4363111237267,7.62422828484558,8.40686480072065,8.90962709431458,9.27945590260686,8.75858522178718,5.17388728816986,6.68110558833864,7.09556176600666,6.11102378216562,6.58947653255289,8.37885024179449,7.88799685934812,7.05107609842636,5.30131287552784,10.9300702206014,7.15664454671476,9.73224835887228,10.113302673639,9.4309848030893,10.4714314226687,6.05795428837681,6.29045741070563,8.00503334463711,6.41787541973161,9.46374151045109,7.24878852693091,7.98932313304099,8.56161190996286,9.12333263134358,6.68685920020841,7.29179243967668,10.7239367634693,6.95425711263356,9.27453508401818,9.13601545321432,6.88826660239828,9.30342079499219,11.5626237880671,10.8195822651998,6.39492765254547,7.03094588953734,8.92109708145745,7.39375528131247,8.78106401276448,6.01004093268092,6.7755943753798,8.54182726570791,8.730706520637,7.12270535526782,9.94227547974339,9.28931789715961,11.1899325724283,8.92564051496287,9.24487705524642,9.67003479348014,8.5415345228024,5.86277853947994,9.67884287509565,8.88941859774327,8.72772960569121,7.50928046999477,8.85623355614316,8.10506594043452,8.39717014881651,6.26263606743277,9.62938617687379,9.21980543659188,8.43109049236283,8.06689806739028,8.0179667034936,10.587207940173,7.12109088930526,6.35106022155769],"y":[5.968,5.135,1.671,1.346,2.148,1.877,2.43,1.479,1.76,2.258,1.134,2.617,1.8,1.546,4.051,2.422,4.287,4.423,5.737,1.559,4.442,4.224,5.485,1.885,3.589,4.98,2.033,3.195,2.217,5.032,4.877,2.19,3.159,1.43,2.538,2.055,1.587,2.481,4.623,3.5,2.251,2.543,1.506,1.764,3.051,1.495,1.683,1.163,6.117,4.361,1.59,1.45,1.63,4.713,1.939,3.055,3.3,5.431,2.146,2,2.204,1.428,1.529,2.639,1.562,4.728,1.372,2.383,1.995,4.225,2.266,3.174,1.397,3.864,1.632,2.022,2.316,3.7,1.483,1.707,6.3,3.109],"z":[49.49,53.17,77.75,83.55,73.66,78.85,76.06,76.37,82.3,69.84,78.4,51.34,77.41,77.12,52.58,65.1,53.56,51.3,51.61,75.61,59.33,57.71,50.56,81.37,60.04,52.91,78.07,64.32,71.6,56.39,50.4,73.45,63.87,78.47,67.62,71.8,75.28,72.84,59.16,63.1,75.89,69.42,78.51,75.07,48.11,78.28,82.67,83.8,53.14,60.95,76.89,73.48,77.37,51.81,67.87,63.04,57.1,53.38,76.44,72.1,78.24,77.95,75.01,75.57,77.05,48.87,79.53,54.09,74.73,63.82,74.18,48.54,77.14,59.4,73.82,76.61,69.4,65.1,74.58,78.02,50.04,52.72],"opacity":0.5,"marker":{"color":"rgba(102,194,165,1)","size":5,"line":{"color":"rgba(102,194,165,1)"}},"text":["Afghanistan <br>lifeExpF:  49.49 <br>lifeExpF predicted 53.39","Angola <br>lifeExpF:  53.17 <br>lifeExpF predicted 62.1","Aruba <br>lifeExpF:  77.75 <br>lifeExpF predicted 80.67","Austria <br>lifeExpF:  83.55 <br>lifeExpF predicted 83.68","Azerbaijan <br>lifeExpF:  73.66 <br>lifeExpF predicted 75.29","Bahamas <br>lifeExpF:  78.85 <br>lifeExpF predicted 79.76","Bahrain <br>lifeExpF:  76.06 <br>lifeExpF predicted 76.93","Belarus <br>lifeExpF:  76.37 <br>lifeExpF predicted 78.12","Bermuda <br>lifeExpF:  82.3 <br>lifeExpF predicted 83.68","Bhutan <br>lifeExpF:  69.84 <br>lifeExpF predicted 72.38","Bosnia and Herzegovina <br>lifeExpF:  78.4 <br>lifeExpF predicted 78.99","Botswana <br>lifeExpF:  51.34 <br>lifeExpF predicted 73.98","Brazil <br>lifeExpF:  77.41 <br>lifeExpF predicted 78.3","Bulgaria <br>lifeExpF:  77.12 <br>lifeExpF predicted 78.11","Burundi <br>lifeExpF:  52.58 <br>lifeExpF predicted 58.93","Cambodia <br>lifeExpF:  65.1 <br>lifeExpF predicted 69.41","Cameroon <br>lifeExpF:  53.56 <br>lifeExpF predicted 62.58","Central African Republic <br>lifeExpF:  51.3 <br>lifeExpF predicted 59.63","Chad <br>lifeExpF:  51.61 <br>lifeExpF predicted 55.27","China <br>lifeExpF:  75.61 <br>lifeExpF predicted 77.14","Congo <br>lifeExpF:  59.33 <br>lifeExpF predicted 63.85","Cote dIvoire <br>lifeExpF:  57.71 <br>lifeExpF predicted 62.74","Democratic Republic of the Congo <br>lifeExpF:  50.56 <br>lifeExpF predicted 53.22","Denmark <br>lifeExpF:  81.37 <br>lifeExpF predicted 81.93","Djibouti <br>lifeExpF:  60.04 <br>lifeExpF predicted 65.66","Equatorial Guinea <br>lifeExpF:  52.91 <br>lifeExpF predicted 66.04","French Polynesia <br>lifeExpF:  78.07 <br>lifeExpF predicted 79.34","Gabon <br>lifeExpF:  64.32 <br>lifeExpF predicted 72.81","Greenland <br>lifeExpF:  71.6 <br>lifeExpF predicted 79.43","Guinea <br>lifeExpF:  56.39 <br>lifeExpF predicted 56.95","Guinea-Bissau <br>lifeExpF:  50.4 <br>lifeExpF predicted 58.16","Guyana <br>lifeExpF:  73.45 <br>lifeExpF predicted 73.58","Haiti <br>lifeExpF:  63.87 <br>lifeExpF predicted 65.68","Hungary <br>lifeExpF:  78.47 <br>lifeExpF predicted 80.3","India <br>lifeExpF:  67.62 <br>lifeExpF predicted 70.3","Indonesia <br>lifeExpF:  71.8 <br>lifeExpF predicted 74.11","Iran <br>lifeExpF:  75.28 <br>lifeExpF predicted 77.46","Kazakhstan <br>lifeExpF:  72.84 <br>lifeExpF predicted 75.06","Kenya <br>lifeExpF:  59.16 <br>lifeExpF predicted 60.18","Kiribati <br>lifeExpF:  63.1 <br>lifeExpF predicted 66.36","Kuwait <br>lifeExpF:  75.89 <br>lifeExpF predicted 79.89","Laos <br>lifeExpF:  69.42 <br>lifeExpF predicted 69.56","Latvia <br>lifeExpF:  78.51 <br>lifeExpF predicted 79.52","Lebanon <br>lifeExpF:  75.07 <br>lifeExpF predicted 78.1","Lesotho <br>lifeExpF:  48.11 <br>lifeExpF predicted 67.27","Lithuania <br>lifeExpF:  78.28 <br>lifeExpF predicted 79.64","Luxembourg <br>lifeExpF:  82.67 <br>lifeExpF predicted 84.31","Macao <br>lifeExpF:  83.8 <br>lifeExpF predicted 84.69","Mali <br>lifeExpF:  53.14 <br>lifeExpF predicted 53.21","Mauritania <br>lifeExpF:  60.95 <br>lifeExpF predicted 62.12","Mauritius <br>lifeExpF:  76.89 <br>lifeExpF predicted 78.32","Moldova <br>lifeExpF:  73.48 <br>lifeExpF predicted 75.22","Montenegro <br>lifeExpF:  77.37 <br>lifeExpF predicted 77.81","Mozambique <br>lifeExpF:  51.81 <br>lifeExpF predicted 58.17","Myanmar <br>lifeExpF:  67.87 <br>lifeExpF predicted 71.67","Namibia <br>lifeExpF:  63.04 <br>lifeExpF predicted 71.25","Nauru <br>lifeExpF:  57.1 <br>lifeExpF predicted 70.68","Nigeria <br>lifeExpF:  53.38 <br>lifeExpF predicted 57.84","Oman <br>lifeExpF:  76.44 <br>lifeExpF predicted 78.45","Palau <br>lifeExpF:  72.1 <br>lifeExpF predicted 77.48","Qatar <br>lifeExpF:  78.24 <br>lifeExpF predicted 81.22","Romania <br>lifeExpF:  77.95 <br>lifeExpF predicted 79.01","Russian Federation <br>lifeExpF:  75.01 <br>lifeExpF predicted 79.35","Saudi Arabia <br>lifeExpF:  75.57 <br>lifeExpF predicted 75.72","Serbia <br>lifeExpF:  77.05 <br>lifeExpF predicted 77.52","Sierra Leone <br>lifeExpF:  48.87 <br>lifeExpF predicted 57.75","Slovakia <br>lifeExpF:  79.53 <br>lifeExpF predicted 81.06","South Africa <br>lifeExpF:  54.09 <br>lifeExpF predicted 74.91","St Vincent and Grenadines <br>lifeExpF:  74.73 <br>lifeExpF predicted 76.15","Sudan <br>lifeExpF:  63.82 <br>lifeExpF predicted 63.84","Suriname <br>lifeExpF:  74.18 <br>lifeExpF predicted 75.32","Swaziland <br>lifeExpF:  48.54 <br>lifeExpF predicted 69.69","TFYR Macedonia <br>lifeExpF:  77.14 <br>lifeExpF predicted 77.86","Togo <br>lifeExpF:  59.4 <br>lifeExpF predicted 62.35","Trinidad and Tobago <br>lifeExpF:  73.82 <br>lifeExpF predicted 79.85","Turkey <br>lifeExpF:  76.61 <br>lifeExpF predicted 77.22","Turkmenistan <br>lifeExpF:  69.4 <br>lifeExpF predicted 74.08","Tuvalu <br>lifeExpF:  65.1 <br>lifeExpF predicted 67.39","Ukraine <br>lifeExpF:  74.58 <br>lifeExpF predicted 76.58","United Arab Emirates <br>lifeExpF:  78.02 <br>lifeExpF predicted 81.85","Zambia <br>lifeExpF:  50.04 <br>lifeExpF predicted 54.19","Zimbabwe <br>lifeExpF:  52.72 <br>lifeExpF predicted 65.73"],"hoverinfo":["text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text"],"name":"-","textfont":{"color":"rgba(102,194,165,1)"},"error_y":{"color":"rgba(102,194,165,1)"},"error_x":{"color":"rgba(102,194,165,1)"},"line":{"color":"rgba(102,194,165,1)"},"frame":null},{"type":"scatter3d","mode":"markers","x":[8.2099068719896,8.40581460343285,9.52880137579554,9.12283068903458,8.016548894924,10.952890339125,6.50787454916787,9.58171770417346,10.6877269388327,8.41089890659832,6.60813556895731,7.58979095478736,10.3935266251115,6.2532517220144,10.7442117105526,8.0845624152353,10.9516465447968,9.38325953110749,8.73597524521297,6.60204500401097,9.41018254248813,8.949468992601,9.5338359172171,8.64899308586261,10.2528865911554,9.84367385183427,8.85663245064086,8.55552889768181,6.5597568705223,8.31203689511641,7.8837101715776,8.13903191783542,6.06168999199748,9.55643756827699,5.78259365508049,8.17349088068631,10.7032826696718,10.5852173015768,6.36147517423174,7.89368400753856,10.5930558364788,7.19533734643358,10.1850433979205,8.91314653915181,7.96634386552093,7.61391739661958,10.3679665742017,10.5784198446752,6.78953464759471,10.741174374504,10.2857386210925,10.4304945488805,8.49678638163858,10.6722267820343,8.39960263723411,6.76319182779078,5.38724357574244,9.33439702063816,6.04476831913029,5.87885560272533,9.03274363561794,8.45201446539124,9.88324402805907,8.02923738174099,9.11610661262344,7.89290020606147,7.71721775192343,7.96032362914884,6.28170584195469,9.9194150340855,10.7559797560772,10.4721904983323,10.3850522197002,7.03165291563837,5.87969464626497,6.22257626807137,11.3455559669331,6.91095016987866,7.50631701705221,8.93774393694244,7.26431021572029,7.92699963226667,8.59613375348884,7.6686078358961,9.4143581868519,9.97290166862045,10.1834272298497,9.95476034671355,6.27720724017871,8.8064390405317,8.11471362214844,7.15719016425041,6.93993201067736,9.34579740935619,10.6870031771584,10.0480120489688,7.08464544577888,4.74319148388547,10.3268842576086,7.77287902428105,10.7976594567919,11.1401240426979,7.98326951640427,6.70441435496411,6.24610676548156,8.43659032688414,8.17275732913552,8.3480879135849,6.23244801655052,10.5003110398605,10.74819420149,9.38868737401473,7.26353982663572,7.99412628122789,9.51064494442919,7.07555523925707,7.27045205523936],"y":[1.525,2.142,2,2.172,1.735,1.949,2.157,1.575,1.835,2.679,5.078,3.229,1.984,5.75,1.691,2.279,1.6,1.832,2.293,4.742,2.53080628409411,1.812,1.501,1.451,1.458,1.501,3,2.49,5.918,2.393,2.636,2.171,4.243,1.702,3.848,2.602,1.875,1.987,4.689,1.528,1.457,3.988,1.54,2.171,3.84,2.996,1.137,2.098,4.535,2.097,2.909,1.476,2.262,1.418,2.889,2.621,5.038,2.41,4.493,5.968,2.572,1.668,1.284,4.38446625852824,2.227,3.307,2.446,2.183,2.587,1.9,1.794,2.091,2.135,2.5,6.925,1.988,1.948,3.201,4.27,2.409,3.799,2.858,2.41,3.05,1.415,1.312,1.757,1.389,5.282,1.907,3.763,3.488,4.605,2.34,1.367,1.477,4.041,6.283,1.504,2.235,1.925,1.536,2.772,3.162,5.499,1.528,3.783,1.909,5.901,1.867,2.077,2.043,2.264,3.75,2.391,1.75,4.938],"z":[80.4,75,81.1,79.89,77.33,84.27,70.23,80.26,82.81,77.81,58.66,69.4,80.64,57.02,83.49,77.7,83.8,82.35,77.69,63.18,76.2454672361809,81.99,80.37,81.33,82.14,81,78.2,76.57,64.2,78.91,75.52,77.09,64.41,79.95,61.59,72.27,83.28,84.9,60.3,77.31,82.99,65.8,82.58,77.72,75.1,75.92,86.35,83.77,72.6,83.17,84.19,84.62,75.98,87.12,75.17,72.36,58.59,77.86,68.61,55.17,76.86,78.7,82.29,70.6,79.64,70.17,72.83,74.86,70.05,79.86,82.79,80.49,82.77,77.45,55.77,72.12,83.47,66.88,74.81,79.07,65.52,74.91,76.9,72.57,80.56,82.76,83.2,83.95,57.13,77.54,76.02,66.48,60.92,78,83.71,82.84,70,53.38,84.76,78.4,83.65,84.71,77.72,71.23,60.31,77.76,75.38,77.05,55.44,82.42,81.31,80.66,71.9,73.58,77.73,77.44,67.66],"opacity":0.5,"marker":{"color":"rgba(141,160,203,1)","size":5,"line":{"color":"rgba(141,160,203,1)"}},"text":["Albania <br>lifeExpF:  80.4 <br>lifeExpF predicted 76.87","Algeria <br>lifeExpF:  75 <br>lifeExpF predicted 74.75","Anguilla <br>lifeExpF:  81.1 <br>lifeExpF predicted 78.06","Argentina <br>lifeExpF:  79.89 <br>lifeExpF predicted 76.36","Armenia <br>lifeExpF:  77.33 <br>lifeExpF predicted 75.52","Australia <br>lifeExpF:  84.27 <br>lifeExpF predicted 81.72","Bangladesh <br>lifeExpF:  70.23 <br>lifeExpF predicted 70.11","Barbados <br>lifeExpF:  80.26 <br>lifeExpF predicted 79.97","Belgium <br>lifeExpF:  82.81 <br>lifeExpF predicted 81.55","Belize <br>lifeExpF:  77.81 <br>lifeExpF predicted 72.51","Benin <br>lifeExpF:  58.66 <br>lifeExpF predicted 58.08","Bolivia <br>lifeExpF:  69.4 <br>lifeExpF predicted 68.22","Brunei Darussalam <br>lifeExpF:  80.64 <br>lifeExpF predicted 80.22","Burkina Faso <br>lifeExpF:  57.02 <br>lifeExpF predicted 54.41","Canada <br>lifeExpF:  83.49 <br>lifeExpF predicted 82.3","Cape Verde <br>lifeExpF:  77.7 <br>lifeExpF predicted 73.4","Cayman Islands <br>lifeExpF:  83.8 <br>lifeExpF predicted 83.18","Chile <br>lifeExpF:  82.35 <br>lifeExpF predicted 78.42","Colombia <br>lifeExpF:  77.69 <br>lifeExpF predicted 74.92","Comoros <br>lifeExpF:  63.18 <br>lifeExpF predicted 59.48","Cook Islands <br>lifeExpF:  76.2454672361809 <br>lifeExpF predicted 75.55","Costa Rica <br>lifeExpF:  81.99 <br>lifeExpF predicted 77.45","Croatia <br>lifeExpF:  80.37 <br>lifeExpF predicted 80.17","Cuba <br>lifeExpF:  81.33 <br>lifeExpF predicted 78.24","Cyprus <br>lifeExpF:  82.14 <br>lifeExpF predicted 82.09","Czech Republic <br>lifeExpF:  81 <br>lifeExpF predicted 80.92","Dominica <br>lifeExpF:  78.2 <br>lifeExpF predicted 72.24","Dominican Republic <br>lifeExpF:  76.57 <br>lifeExpF predicted 73.65","East Timor <br>lifeExpF:  64.2 <br>lifeExpF predicted 54.44","Ecuador <br>lifeExpF:  78.91 <br>lifeExpF predicted 73.47","Egypt <br>lifeExpF:  75.52 <br>lifeExpF predicted 71.42","El Salvador <br>lifeExpF:  77.09 <br>lifeExpF predicted 73.99","Eritrea <br>lifeExpF:  64.41 <br>lifeExpF predicted 60.27","Estonia <br>lifeExpF:  79.95 <br>lifeExpF predicted 79.38","Ethiopia <br>lifeExpF:  61.59 <br>lifeExpF predicted 61.26","Fiji <br>lifeExpF:  72.27 <br>lifeExpF predicted 72.26","Finland <br>lifeExpF:  83.28 <br>lifeExpF predicted 81.42","France <br>lifeExpF:  84.9 <br>lifeExpF predicted 80.67","Gambia <br>lifeExpF:  60.3 <br>lifeExpF predicted 59.12","Georgia <br>lifeExpF:  77.31 <br>lifeExpF predicted 76.1","Germany <br>lifeExpF:  82.99 <br>lifeExpF predicted 82.91","Ghana <br>lifeExpF:  65.8 <br>lifeExpF predicted 64.08","Greece <br>lifeExpF:  82.58 <br>lifeExpF predicted 81.58","Grenada <br>lifeExpF:  77.72 <br>lifeExpF predicted 75.86","Guatemala <br>lifeExpF:  75.1 <br>lifeExpF predicted 66.56","Honduras <br>lifeExpF:  75.92 <br>lifeExpF predicted 69.26","Hong Kong <br>lifeExpF:  86.35 <br>lifeExpF predicted 83.71","Iceland <br>lifeExpF:  83.77 <br>lifeExpF predicted 80.19","Iraq <br>lifeExpF:  72.6 <br>lifeExpF predicted 60.8","Ireland <br>lifeExpF:  83.17 <br>lifeExpF predicted 80.58","Israel <br>lifeExpF:  84.19 <br>lifeExpF predicted 76.07","Italy <br>lifeExpF:  84.62 <br>lifeExpF predicted 82.44","Jamaica <br>lifeExpF:  75.98 <br>lifeExpF predicted 74.47","Japan <br>lifeExpF:  87.12 <br>lifeExpF predicted 83.27","Jordan <br>lifeExpF:  75.17 <br>lifeExpF predicted 71.6","Kyrgyzstan <br>lifeExpF:  72.36 <br>lifeExpF predicted 68.78","Liberia <br>lifeExpF:  58.59 <br>lifeExpF predicted 55.3","Libya <br>lifeExpF:  77.86 <br>lifeExpF predicted 75.87","Madagascar <br>lifeExpF:  68.61 <br>lifeExpF predicted 59.18","Malawi <br>lifeExpF:  55.17 <br>lifeExpF predicted 52.59","Malaysia <br>lifeExpF:  76.86 <br>lifeExpF predicted 74.46","Maldives <br>lifeExpF:  78.7 <br>lifeExpF predicted 76.86","Malta <br>lifeExpF:  82.29 <br>lifeExpF predicted 81.92","Marshall Islands <br>lifeExpF:  70.6 <br>lifeExpF predicted 64.43","Mexico <br>lifeExpF:  79.64 <br>lifeExpF predicted 76.11","Micronesia <br>lifeExpF:  70.17 <br>lifeExpF predicted 68.62","Mongolia <br>lifeExpF:  72.83 <br>lifeExpF predicted 71.81","Morocco <br>lifeExpF:  74.86 <br>lifeExpF predicted 73.51","Nepal <br>lifeExpF:  70.05 <br>lifeExpF predicted 67.76","Neth Antilles <br>lifeExpF:  79.86 <br>lifeExpF predicted 79.43","Netherlands <br>lifeExpF:  82.79 <br>lifeExpF predicted 81.89","New Caledonia <br>lifeExpF:  80.49 <br>lifeExpF predicted 79.96","New Zealand <br>lifeExpF:  82.77 <br>lifeExpF predicted 79.56","Nicaragua <br>lifeExpF:  77.45 <br>lifeExpF predicted 69.93","Niger <br>lifeExpF:  55.77 <br>lifeExpF predicted 48.57","North Korea <br>lifeExpF:  72.12 <br>lifeExpF predicted 70.13","Norway <br>lifeExpF:  83.47 <br>lifeExpF predicted 82.67","Pakistan <br>lifeExpF:  66.88 <br>lifeExpF predicted 66.7","Palestinian Territory <br>lifeExpF:  74.81 <br>lifeExpF predicted 63.65","Panama <br>lifeExpF:  79.07 <br>lifeExpF predicted 74.92","Papua New Guinea <br>lifeExpF:  65.52 <br>lifeExpF predicted 65.04","Paraguay <br>lifeExpF:  74.91 <br>lifeExpF predicted 70.59","Peru <br>lifeExpF:  76.9 <br>lifeExpF predicted 74.09","Philippines <br>lifeExpF:  72.57 <br>lifeExpF predicted 69.16","Poland <br>lifeExpF:  80.56 <br>lifeExpF predicted 80.24","Portugal <br>lifeExpF:  82.76 <br>lifeExpF predicted 82.02","Puerto Rico <br>lifeExpF:  83.2 <br>lifeExpF predicted 80.66","Republic of Korea <br>lifeExpF:  83.95 <br>lifeExpF predicted 81.66","Rwanda <br>lifeExpF:  57.13 <br>lifeExpF predicted 56.43","Saint Lucia <br>lifeExpF:  77.54 <br>lifeExpF predicted 76.71","Samoa <br>lifeExpF:  76.02 <br>lifeExpF predicted 67.24","Sao Tome and Principe <br>lifeExpF:  66.48 <br>lifeExpF predicted 66.09","Senegal <br>lifeExpF:  60.92 <br>lifeExpF predicted 60.87","Seychelles <br>lifeExpF:  78 <br>lifeExpF predicted 76.19","Singapore <br>lifeExpF:  83.71 <br>lifeExpF predicted 83.52","Slovenia <br>lifeExpF:  82.84 <br>lifeExpF predicted 81.51","Solomon Islands <br>lifeExpF:  70 <br>lifeExpF predicted 63.59","Somalia <br>lifeExpF:  53.38 <br>lifeExpF predicted 48.52","Spain <br>lifeExpF:  84.76 <br>lifeExpF predicted 82.07","Sri Lanka <br>lifeExpF:  78.4 <br>lifeExpF predicted 72.83","Sweden <br>lifeExpF:  83.65 <br>lifeExpF predicted 81.44","Switzerland <br>lifeExpF:  84.71 <br>lifeExpF predicted 83.9","Syria <br>lifeExpF:  77.72 <br>lifeExpF predicted 71.09","Tajikistan <br>lifeExpF:  71.23 <br>lifeExpF predicted 66.36","Tanzania <br>lifeExpF:  60.31 <br>lifeExpF predicted 55.44","Thailand <br>lifeExpF:  77.76 <br>lifeExpF predicted 77.41","Tonga <br>lifeExpF:  75.38 <br>lifeExpF predicted 67.3","Tunisia <br>lifeExpF:  77.05 <br>lifeExpF predicted 75.59","Uganda <br>lifeExpF:  55.44 <br>lifeExpF predicted 53.72","United Kingdom <br>lifeExpF:  82.42 <br>lifeExpF predicted 80.97","United States <br>lifeExpF:  81.31 <br>lifeExpF predicted 80.68","Uruguay <br>lifeExpF:  80.66 <br>lifeExpF predicted 77.54","Uzbekistan <br>lifeExpF:  71.9 <br>lifeExpF predicted 71.48","Vanuatu <br>lifeExpF:  73.58 <br>lifeExpF predicted 67.01","Venezuela <br>lifeExpF:  77.73 <br>lifeExpF predicted 76.38","Viet Nam <br>lifeExpF:  77.44 <br>lifeExpF predicted 73.19","Yemen <br>lifeExpF:  67.66 <br>lifeExpF predicted 60.27"],"hoverinfo":["text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text"],"name":"+","textfont":{"color":"rgba(141,160,203,1)"},"error_y":{"color":"rgba(141,160,203,1)"},"error_x":{"color":"rgba(141,160,203,1)"},"line":{"color":"rgba(141,160,203,1)"},"frame":null},{"x":[6.21260609575152,8.2099068719896,8.40581460343285,8.37145039936278,9.52880137579554,9.12283068903458,8.016548894924,10.036772039682,10.952890339125,10.7179404457228,8.63721372201281,10.0195624635112,9.80830286485734,6.50787454916787,9.58171770417346,8.64857226947262,10.6877269388327,8.41089890659832,6.60813556895731,11.4363111237267,7.62422828484558,7.58979095478736,8.40686480072065,8.90962709431458,9.27945590260686,10.3935266251115,8.75858522178718,6.2532517220144,5.17388728816986,6.68110558833864,7.09556176600666,10.7442117105526,8.0845624152353,10.9516465447968,6.11102378216562,6.58947653255289,9.38325953110749,8.37885024179449,8.73597524521297,6.60204500401097,7.88799685934812,9.41018254248813,8.949468992601,7.05107609842636,9.5338359172171,8.64899308586261,10.2528865911554,9.84367385183427,5.30131287552784,10.9300702206014,7.15664454671476,8.85663245064086,8.55552889768181,6.5597568705223,8.31203689511641,7.8837101715776,8.13903191783542,9.73224835887228,6.06168999199748,9.55643756827699,5.78259365508049,8.17349088068631,10.7032826696718,10.5852173015768,10.113302673639,9.4309848030893,6.36147517423174,7.89368400753856,10.5930558364788,7.19533734643358,10.1850433979205,10.4714314226687,8.91314653915181,7.96634386552093,6.05795428837681,6.29045741070563,8.00503334463711,6.41787541973161,7.61391739661958,10.3679665742017,9.46374151045109,10.5784198446752,7.24878852693091,7.98932313304099,8.56161190996286,6.78953464759471,10.741174374504,10.2857386210925,10.4304945488805,8.49678638163858,10.6722267820343,8.39960263723411,9.12333263134358,6.68685920020841,7.29179243967668,10.7239367634693,6.76319182779078,6.95425711263356,9.27453508401818,9.13601545321432,6.88826660239828,5.38724357574244,9.33439702063816,9.30342079499219,11.5626237880671,10.8195822651998,6.04476831913029,5.87885560272533,9.03274363561794,8.45201446539124,6.39492765254547,9.88324402805907,8.02923738174099,7.03094588953734,8.92109708145745,9.11610661262344,7.89290020606147,7.39375528131247,7.71721775192343,8.78106401276448,7.96032362914884,6.01004093268092,6.7755943753798,8.54182726570791,8.730706520637,6.28170584195469,9.9194150340855,10.7559797560772,10.4721904983323,10.3850522197002,7.03165291563837,5.87969464626497,7.12270535526782,6.22257626807137,11.3455559669331,9.94227547974339,6.91095016987866,9.28931789715961,7.50631701705221,8.93774393694244,7.26431021572029,7.92699963226667,8.59613375348884,7.6686078358961,9.4143581868519,9.97290166862045,10.1834272298497,11.1899325724283,9.95476034671355,8.92564051496287,9.24487705524642,6.27720724017871,8.8064390405317,8.11471362214844,7.15719016425041,9.67003479348014,6.93993201067736,8.5415345228024,9.34579740935619,5.86277853947994,10.6870031771584,9.67884287509565,10.0480120489688,7.08464544577888,4.74319148388547,8.88941859774327,10.3268842576086,7.77287902428105,8.72772960569121,7.50928046999477,8.85623355614316,8.10506594043452,10.7976594567919,11.1401240426979,7.98326951640427,6.70441435496411,6.24610676548156,8.39717014881651,8.43659032688414,6.26263606743277,8.17275732913552,9.62938617687379,8.3480879135849,9.21980543659188,8.43109049236283,8.06689806739028,6.23244801655052,8.0179667034936,10.587207940173,10.5003110398605,10.74819420149,9.38868737401473,7.26353982663572,7.99412628122789,9.51064494442919,7.07555523925707,7.27045205523936,7.12109088930526,6.35106022155769],"y":[5.968,1.525,2.142,5.135,2,2.172,1.735,1.671,1.949,1.346,2.148,1.877,2.43,2.157,1.575,1.479,1.835,2.679,5.078,1.76,2.258,3.229,1.134,2.617,1.8,1.984,1.546,5.75,4.051,2.422,4.287,1.691,2.279,1.6,4.423,5.737,1.832,1.559,2.293,4.742,4.442,2.53080628409411,1.812,4.224,1.501,1.451,1.458,1.501,5.485,1.885,3.589,3,2.49,5.918,2.393,2.636,2.171,4.98,4.243,1.702,3.848,2.602,1.875,1.987,2.033,3.195,4.689,1.528,1.457,3.988,1.54,2.217,2.171,3.84,5.032,4.877,2.19,3.159,2.996,1.137,1.43,2.098,2.538,2.055,1.587,4.535,2.097,2.909,1.476,2.262,1.418,2.889,2.481,4.623,3.5,2.251,2.621,2.543,1.506,1.764,3.051,5.038,2.41,1.495,1.683,1.163,4.493,5.968,2.572,1.668,6.117,1.284,4.38446625852824,4.361,1.59,2.227,3.307,1.45,2.446,1.63,2.183,4.713,1.939,3.055,3.3,2.587,1.9,1.794,2.091,2.135,2.5,6.925,5.431,1.988,1.948,2.146,3.201,2,4.27,2.409,3.799,2.858,2.41,3.05,1.415,1.312,1.757,2.204,1.389,1.428,1.529,5.282,1.907,3.763,3.488,2.639,4.605,1.562,2.34,4.728,1.367,1.372,1.477,4.041,6.283,2.383,1.504,2.235,1.995,4.225,2.266,3.174,1.925,1.536,2.772,3.162,5.499,1.397,1.528,3.864,3.783,1.632,1.909,2.022,2.316,3.7,5.901,1.483,1.707,1.867,2.077,2.043,2.264,3.75,2.391,1.75,4.938,6.3,3.109],"z":[49.49,80.4,75,53.17,81.1,79.89,77.33,77.75,84.27,83.55,73.66,78.85,76.06,70.23,80.26,76.37,82.81,77.81,58.66,82.3,69.84,69.4,78.4,51.34,77.41,80.64,77.12,57.02,52.58,65.1,53.56,83.49,77.7,83.8,51.3,51.61,82.35,75.61,77.69,63.18,59.33,76.2454672361809,81.99,57.71,80.37,81.33,82.14,81,50.56,81.37,60.04,78.2,76.57,64.2,78.91,75.52,77.09,52.91,64.41,79.95,61.59,72.27,83.28,84.9,78.07,64.32,60.3,77.31,82.99,65.8,82.58,71.6,77.72,75.1,56.39,50.4,73.45,63.87,75.92,86.35,78.47,83.77,67.62,71.8,75.28,72.6,83.17,84.19,84.62,75.98,87.12,75.17,72.84,59.16,63.1,75.89,72.36,69.42,78.51,75.07,48.11,58.59,77.86,78.28,82.67,83.8,68.61,55.17,76.86,78.7,53.14,82.29,70.6,60.95,76.89,79.64,70.17,73.48,72.83,77.37,74.86,51.81,67.87,63.04,57.1,70.05,79.86,82.79,80.49,82.77,77.45,55.77,53.38,72.12,83.47,76.44,66.88,72.1,74.81,79.07,65.52,74.91,76.9,72.57,80.56,82.76,83.2,78.24,83.95,77.95,75.01,57.13,77.54,76.02,66.48,75.57,60.92,77.05,78,48.87,83.71,79.53,82.84,70,53.38,54.09,84.76,78.4,74.73,63.82,74.18,48.54,83.65,84.71,77.72,71.23,60.31,77.14,77.76,59.4,75.38,73.82,77.05,76.61,69.4,65.1,55.44,74.58,78.02,82.42,81.31,80.66,71.9,73.58,77.73,77.44,67.66,50.04,52.72],"text":["-","+","+","-","+","+","+","-","+","-","-","-","-","+","+","-","+","+","+","-","-","+","-","-","-","+","-","+","-","-","-","+","+","+","-","-","+","-","+","+","-","+","+","-","+","+","+","+","-","-","-","+","+","+","+","+","+","-","+","+","+","+","+","+","-","-","+","+","+","+","+","-","+","+","-","-","-","-","+","+","-","+","-","-","-","+","+","+","+","+","+","+","-","-","-","-","+","-","-","-","-","+","+","-","-","-","+","+","+","+","-","+","+","-","-","+","+","-","+","-","+","-","-","-","-","+","+","+","+","+","+","+","-","+","+","-","+","-","+","+","+","+","+","+","+","+","+","-","+","-","-","+","+","+","+","-","+","-","+","-","+","-","+","+","+","-","+","+","-","-","-","-","+","+","+","+","+","-","+","-","+","-","+","-","-","-","+","-","-","+","+","+","+","+","+","+","+","-","-"],"type":"scatter3d","mode":"text","textposition":["middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center","middle center"],"hoverinfo":["none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none"],"marker":{"color":"rgba(44,160,44,1)","size":[15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15],"sizemode":"area","line":{"color":"rgba(44,160,44,1)"}},"textfont":{"size":15},"error_y":{"color":"rgba(44,160,44,1)","width":15},"error_x":{"color":"rgba(44,160,44,1)","width":15},"line":{"color":"rgba(44,160,44,1)","width":15},"frame":null},{"colorbar":{"title":"resids<br />lifeExpF<br />m","ticklen":2,"len":0.5,"lenmode":"fraction","y":1,"yanchor":"top"},"colorscale":[["0","rgba(68,1,84,1)"],["0.0416666666666666","rgba(70,19,97,1)"],["0.0833333333333334","rgba(72,32,111,1)"],["0.125","rgba(71,45,122,1)"],["0.166666666666667","rgba(68,58,128,1)"],["0.208333333333333","rgba(64,70,135,1)"],["0.25","rgba(60,82,138,1)"],["0.291666666666667","rgba(56,93,140,1)"],["0.333333333333333","rgba(49,104,142,1)"],["0.375","rgba(46,114,142,1)"],["0.416666666666667","rgba(42,123,142,1)"],["0.458333333333333","rgba(38,133,141,1)"],["0.5","rgba(37,144,140,1)"],["0.541666666666667","rgba(33,154,138,1)"],["0.583333333333333","rgba(39,164,133,1)"],["0.625","rgba(47,174,127,1)"],["0.666666666666667","rgba(53,183,121,1)"],["0.708333333333333","rgba(79,191,110,1)"],["0.75","rgba(98,199,98,1)"],["0.791666666666667","rgba(119,207,85,1)"],["0.833333333333333","rgba(147,214,70,1)"],["0.875","rgba(172,220,52,1)"],["0.916666666666667","rgba(199,225,42,1)"],["0.958333333333333","rgba(226,228,40,1)"],["1","rgba(253,231,37,1)"]],"showscale":true,"z":[[75.5234698240734,77.9384845539588,80.3534992838442,82.7685140137296,85.183528743615,87.5985434735004,90.0135582033858],[71.3243458240589,73.7393605539443,76.1543752838296,78.569390013715,80.9844047436004,83.3994194734858,85.8144342033712],[67.1252218240443,69.5402365539297,71.9552512838151,74.3702660137005,76.7852807435858,79.2002954734712,81.6153102033566],[62.9260978240297,65.3411125539151,67.7561272838005,70.1711420136859,72.5861567435713,75.0011714734567,77.4161862033421],[58.7269738240152,61.1419885539006,63.5570032837859,65.9720180136713,68.3870327435567,70.8020474734421,73.2170622033275],[54.5278498240006,56.942864553886,59.3578792837714,61.7728940136568,64.1879087435422,66.6029234734275,69.0179382033129],[50.328725823986,52.7437405538714,55.1587552837568,57.5737700136422,59.9887847435276,62.403799473413,64.8188142032983],[46.1296018239715,48.5446165538569,50.9596312837422,53.3746460136276,55.789660743513,58.2046754733984,60.6196902032838],[41.9304778239569,44.3454925538423,46.7605072837277,49.1755220136131,51.5905367434984,54.0055514733838,56.4205662032692]],"type":"surface","x":[5,6,7,8,9,10,11],"y":[0,1,2,3,4,5,6,7,8],"opacity":0.5,"hoverinfo":"none","contours":{"x":{"highlight":false},"y":{"highlight":false},"z":{"highlight":false}},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="added-variable-plots.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/jtr13/linreg/edit/master/02-plotly-scatter3d.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/jtr13/linreg/blob/master/02-plotly-scatter3d.Rmd",
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

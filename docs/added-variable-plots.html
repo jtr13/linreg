@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Added variable plots | Linear Regression</title>
+  <meta name="description" content="Chapter 2 Added variable plots | Linear Regression" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Added variable plots | Linear Regression" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Added variable plots | Linear Regression" />
+  
+  
+  
+
+<meta name="author" content="Joyce Robbins" />
+
+
+<meta name="date" content="2020-07-28" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="interactive-regression-plane.html"/>
+<script src="libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Linear Regression</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="added-variable-plots.html"><a href="added-variable-plots.html"><i class="fa fa-check"></i><b>2</b> Added variable plots</a></li>
+<li class="chapter" data-level="3" data-path="interactive-regression-plane.html"><a href="interactive-regression-plane.html"><i class="fa fa-check"></i><b>3</b> Interactive regression plane</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Linear Regression</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="added-variable-plots" class="section level1" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Added variable plots</h1>
+<p>p. 54 Figure 3.3(a)</p>
+<ol style="list-style-type: decimal">
+<li>Compute the regression of <code>lifeExpF</code> on <code>log(ppgdp)</code>:</li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="added-variable-plots.html#cb1-1"></a><span class="kw">library</span>(alr4)</span>
+<span id="cb1-2"><a href="added-variable-plots.html#cb1-2"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="added-variable-plots.html#cb1-3"></a><span class="kw">library</span>(plotly)</span>
+<span id="cb1-4"><a href="added-variable-plots.html#cb1-4"></a>u &lt;-<span class="st"> </span>UN11</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="added-variable-plots.html#cb2-1"></a>mod1 &lt;-<span class="st"> </span><span class="kw">lm</span>(u<span class="op">$</span>lifeExpF <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(u<span class="op">$</span>ppgdp))</span>
+<span id="cb2-2"><a href="added-variable-plots.html#cb2-2"></a>mod1</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = u$lifeExpF ~ log(u$ppgdp))
+## 
+## Coefficients:
+##  (Intercept)  log(u$ppgdp)  
+##       29.815         5.019</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="added-variable-plots.html#cb4-1"></a><span class="kw">summary</span>(mod1)<span class="op">$</span>r.squared</span></code></pre></div>
+<pre><code>## [1] 0.5963835</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="added-variable-plots.html#cb6-1"></a>u<span class="op">$</span><span class="st">`</span><span class="dt">Model 1 residuals</span><span class="st">`</span> &lt;-<span class="st"> </span><span class="kw">ifelse</span>(mod1<span class="op">$</span>residuals <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>, <span class="st">&quot;higher than expected lifeExpF&quot;</span>, <span class="st">&quot;lower than expected lifeExpF&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="added-variable-plots.html#cb7-1"></a>g &lt;-<span class="st"> </span><span class="kw">ggplot</span>(u, <span class="kw">aes</span>(<span class="kw">log</span>(ppgdp), lifeExpF, <span class="dt">label =</span> <span class="kw">rownames</span>(u), <span class="dt">color =</span> <span class="st">`</span><span class="dt">Model 1 residuals</span><span class="st">`</span>)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb7-2"><a href="added-variable-plots.html#cb7-2"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st">  </span></span>
+<span id="cb7-3"><a href="added-variable-plots.html#cb7-3"></a><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">group =</span> <span class="dv">1</span>), <span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se=</span><span class="ot">FALSE</span>, <span class="dt">show.legend =</span><span class="ot">FALSE</span>) <span class="op">+</span></span>
+<span id="cb7-4"><a href="added-variable-plots.html#cb7-4"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Model 1&quot;</span>)</span>
+<span id="cb7-5"><a href="added-variable-plots.html#cb7-5"></a>g</span></code></pre></div>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><strong>The residuals from this model are the part of the response <code>lifeExpF</code> not explained by the regression on <code>log(ppgdp)</code></strong></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Compute the regression of <code>fertility</code> on <code>log(ppgdp)</code>.</li>
+</ol>
+<p><strong>The residuals from this model are the part of the new regressor <code>fertility</code> not explained by the regression on <code>log(ppgdp)</code></strong></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="added-variable-plots.html#cb8-1"></a>mod2 &lt;-<span class="st"> </span><span class="kw">lm</span>(u<span class="op">$</span>fertility <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(u<span class="op">$</span>ppgdp))</span>
+<span id="cb8-2"><a href="added-variable-plots.html#cb8-2"></a>mod2</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = u$fertility ~ log(u$ppgdp))
+## 
+## Coefficients:
+##  (Intercept)  log(u$ppgdp)  
+##       8.0097       -0.6201</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="added-variable-plots.html#cb10-1"></a><span class="kw">summary</span>(mod2)<span class="op">$</span>r.squared</span></code></pre></div>
+<pre><code>## [1] 0.5199563</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="added-variable-plots.html#cb12-1"></a>g &lt;-<span class="st"> </span><span class="kw">ggplot</span>(u, <span class="kw">aes</span>(<span class="kw">log</span>(ppgdp), fertility, <span class="dt">label =</span> <span class="kw">rownames</span>(u), <span class="dt">color =</span> <span class="st">`</span><span class="dt">Model 1 residuals</span><span class="st">`</span>)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb12-2"><a href="added-variable-plots.html#cb12-2"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
+<span id="cb12-3"><a href="added-variable-plots.html#cb12-3"></a><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">group =</span> <span class="dv">1</span>), <span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se=</span><span class="ot">FALSE</span>, <span class="dt">show.legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span></span>
+<span id="cb12-4"><a href="added-variable-plots.html#cb12-4"></a><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Model 2&quot;</span>)</span>
+<span id="cb12-5"><a href="added-variable-plots.html#cb12-5"></a>g</span></code></pre></div>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<ol start="3" style="list-style-type: decimal">
+<li>The added variable plot is of the unexplained part of the response from (1) on the unexplained part of the added regressor from (2).</li>
+</ol>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="added-variable-plots.html#cb13-1"></a>residdf &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw">tibble</span>(<span class="dt">r1 =</span> mod1<span class="op">$</span>residuals,</span>
+<span id="cb13-2"><a href="added-variable-plots.html#cb13-2"></a>                          <span class="dt">r2 =</span> mod2<span class="op">$</span>residuals)</span>
+<span id="cb13-3"><a href="added-variable-plots.html#cb13-3"></a>g &lt;-<span class="st"> </span><span class="kw">ggplot</span>(residdf, <span class="kw">aes</span>(r2, r1)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb13-4"><a href="added-variable-plots.html#cb13-4"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
+<span id="cb13-5"><a href="added-variable-plots.html#cb13-5"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="kw">expression</span>(<span class="kw">paste</span>(<span class="kw">hat</span>(e), <span class="st">&quot; from fertility on log(ppgdp)&quot;</span>))) <span class="op">+</span></span>
+<span id="cb13-6"><a href="added-variable-plots.html#cb13-6"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="kw">expression</span>(<span class="kw">paste</span>(<span class="kw">hat</span>(e), <span class="st">&quot; from lifeExpF on log(ppgdp)&quot;</span>))) <span class="op">+</span></span>
+<span id="cb13-7"><a href="added-variable-plots.html#cb13-7"></a><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se=</span><span class="ot">FALSE</span>)</span>
+<span id="cb13-8"><a href="added-variable-plots.html#cb13-8"></a>g</span></code></pre></div>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+The slope of this regression line is:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="added-variable-plots.html#cb14-1"></a><span class="kw">lm</span>(residdf<span class="op">$</span>r1<span class="op">~</span>residdf<span class="op">$</span>r2)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = residdf$r1 ~ residdf$r2)
+## 
+## Coefficients:
+## (Intercept)   residdf$r2  
+##   7.681e-16   -4.199e+00</code></pre>
+<p>It is the same as the coefficient of <span class="math inline">\(\hat{\beta_2}\)</span> with both regressors:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="added-variable-plots.html#cb16-1"></a>u<span class="op">$</span>logppgdp &lt;-<span class="st"> </span><span class="kw">log</span>(u<span class="op">$</span>ppgdp)</span>
+<span id="cb16-2"><a href="added-variable-plots.html#cb16-2"></a>mod &lt;-<span class="st"> </span><span class="kw">lm</span>(lifeExpF <span class="op">~</span><span class="st"> </span>fertility <span class="op">+</span><span class="st"> </span>logppgdp, <span class="dt">data =</span> u)</span>
+<span id="cb16-3"><a href="added-variable-plots.html#cb16-3"></a>mod</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = lifeExpF ~ fertility + logppgdp, data = u)
+## 
+## Coefficients:
+## (Intercept)    fertility     logppgdp  
+##      63.448       -4.199        2.415</code></pre>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="interactive-regression-plane.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/jtr13/linreg/edit/master/01-variable-added-plots.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/jtr13/linreg/blob/master/01-variable-added-plots.Rmd",
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

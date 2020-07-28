@@ -1,0 +1,82 @@
+# Interactive regression plane
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE,
+                      warning = FALSE,
+                      cache = TRUE)
+```
+
+```{r}
+library(alr4)
+library(tidyverse)
+library(plotly)
+u <- UN11
+```
+
+```{r}
+u$logppgdp <- log(u$ppgdp)
+mod <- lm(lifeExpF ~ fertility + logppgdp, data = u)
+mod
+
+# https://community.plotly.com/t/3d-scatter-3d-regression-line/4149
+
+# predict over sensible grid of values
+# 
+#f <- unique(u$fertility)
+#g <- unique(u$logppgdp)
+f <- 0:8
+g <- 5:11
+grid <- expand.grid(f, g)
+d <- setNames(data.frame(grid), c("fertility", "logppgdp"))
+vals <- predict(mod, newdata = d)
+
+# form matrix and give to plotly
+# x has to be the second variable and y the first or
+# do m <- m(t)
+m <- matrix(vals, nrow = 9, ncol = 7)
+
+um <- broom::augment(mod) %>% 
+  rename(country = .rownames) %>% 
+  mutate(label = paste(country, "<br>lifeExpF: ", lifeExpF, "<br>lifeExpF predicted", round(.fitted, 2)),
+         resids = ifelse(.resid < 0, "-", "+"))
+# https://plotly.com/r/line-and-scatter/
+
+plot_ly() %>% 
+
+  add_trace(data = um, type = "scatter3d", mode = "markers", 
+            x = ~logppgdp, y = ~fertility, z = ~lifeExpF, 
+# only 8 symbols available for scatter3d: circle, circle-open,
+# square, square-open, diamond, diamond-open, cross, x
+# instead using pch symbols, see:
+# https://plotly-r.com/scatter-traces.html
+            opacity = .5,
+            marker = list(size = 5),
+            color = ~resids,
+# https://plotly.com/r/hover-text-and-formatting/              
+            text = ~label, hoverinfo = "text") %>% 
+  
+# https://plotly.com/r/3d-hover/#customize-hover-for-spikelines
+  layout(title = "lifeExpF ~ fertility + log(ppgdp)",
+         scene = list(xaxis = list(title = "log(ppgdp)", 
+                                   showspikes = FALSE),
+                      yaxis = list(showspikes = FALSE),
+                      zaxis = list(showspikes = FALSE)))  %>%
+# default textposition is top center
+# https://plotly.com/r/reference/#scatter3d-textposition
+  add_text(data = um,
+           x = ~logppgdp, y = ~fertility, z = ~lifeExpF,
+           text = ~resids, textposition = "middle center",
+           hoverinfo = "none", size = I(15))  %>%
+  
+  add_surface(x = ~g, y = ~f, z = ~m,
+              opacity = .5, 
+#              showscale = FALSE, 
+              hoverinfo = "none", 
+# https://plotly.com/r/3d-hover/#customize-hover-for-surface-contours
+              contours = list(x = list(highlight = FALSE),
+                              y = list(highlight = FALSE),
+                              z = list(highlight = FALSE)))
+
+```
+
