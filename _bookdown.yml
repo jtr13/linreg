@@ -1,8 +1,8 @@
 book_filename: "finalproj"
 output_dir: docs
 delete_merged_file: true
-edit: https://github.com/jtr13/linreg/edit/master/%s
-view: https://github.com/jtr13/linreg/blob/master/%s
+edit: https://github.com/jtr13/linreg/edit/main/%s
+view: https://github.com/jtr13/linreg/blob/main/%s
 language:
   ui:
     chapter_name: "Chapter "
